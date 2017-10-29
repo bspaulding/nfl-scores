@@ -1,0 +1,12 @@
+.row {
+	display: flex;
+	margin: 12px 0px;
+}
+
+.cell {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
