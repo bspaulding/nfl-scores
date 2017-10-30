@@ -8,16 +8,17 @@ import Completed from '../routes/completed';
 import Upcoming from '../routes/upcoming';
 
 export default class App extends Component {
-	async loadScores() {
+	loadScores() {
 		this.setState({ loading: true });
 		try {
-			const response = await fetch('https://feeds.nfl.com/feeds-rs/scores.json');
-			if (response.ok) {
-				const scores = await response.json();
-				this.setState({ loading: false, scores });
-			} else {
-				this.setState({ loading: false });
-			}
+			fetch('https://feeds.nfl.com/feeds-rs/scores.json')
+				.then(response => {
+					if (response.ok) {
+						response.json().then(scores => this.setState({ loading: false, scores }));
+					} else {
+						this.setState({ loading: false });
+					}
+				});
 		} catch (error) {
 			this.setState({ loading: false, error });
 		}
@@ -25,11 +26,11 @@ export default class App extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { loading: false, scores: { gameScores: [] } };
+		this.state = { loading: true, scores: { gameScores: [] } };
 		this.loadScores = this.loadScores.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.loadScores();
 		this.interval = setInterval(this.loadScores, 10000);
 	}
