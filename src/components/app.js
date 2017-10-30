@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 
 import Header from './header';
-import Loader from './Loader';
+import Loader from './loader';
 import Home from '../routes/home';
 import Completed from '../routes/completed';
 import Upcoming from '../routes/upcoming';
