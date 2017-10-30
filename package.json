@@ -17,7 +17,7 @@
         2,
         "1tbs"
       ],
-			"react/jsx-wrap-multilines": 0
+      "react/jsx-wrap-multilines": 0
     }
   },
   "eslintIgnore": [
