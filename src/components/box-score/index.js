@@ -1,6 +1,8 @@
 import { h } from 'preact';
 import style from './style';
 
+const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+const gameDay = date => days[date.getDay()];
 const gameTime = date =>
 	[ date.getHours() % 12,
 		 ':',
@@ -24,6 +26,7 @@ const BoxScore = ({ gameSchedule, score }) =>
 		)}
 		{(!score || score.phase === 'PREGAME') && (
 			<div class={style.cell}>
+				{gameDay(new Date(gameSchedule.isoTime))}<br />
 				{gameTime(new Date(gameSchedule.isoTime))}
 			</div>
 		)}
